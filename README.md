@@ -18,18 +18,18 @@ Under NIS-2, organizations must submit an "Early Warning" within 24 hours of a s
 
 ### 1. 🚨 URGENT: 24-Hour Early Warning Breaches
 Identifies incidents that have surpassed the 24-hour mark without an Early Warning submission.
-```spl
-source="nis2_incidents.csv" severity="Significant" hours_since_detection > 24 regulatory_status="Investigating" | table incident_id, hours_since_detection, system_impacted
+
+``source="nis2_incidents.csv" severity="Significant" hours_since_detection > 24 regulatory_status="Investigating" | table incident_id, hours_since_detection, system_impacted``
 
 ### 2. ⚠️ Approaching 72-Hour Full Report Deadline
 Highlights incidents where an Early Warning was submitted, but the 72-hour final report deadline is approaching.
-source="nis2_incidents.csv" severity="Significant" hours_since_detection > 48 regulatory_status="Early Warning Submitted" | table incident_id, hours_since_detection, system_impacted
+``source="nis2_incidents.csv" severity="Significant" hours_since_detection > 48 regulatory_status="Early Warning Submitted" | table incident_id, hours_since_detection, system_impacted``
 
-3. 📈 Reporting Status Distribution
+###3. 📈 Reporting Status Distribution
 Provides a high-level overview for the CISO and Compliance Officers regarding the current status of all significant incidents.
 
-source="nis2_incidents.csv" severity="Significant" | stats count by regulatory_status
+``source="nis2_incidents.csv" severity="Significant" | stats count by regulatory_status``
 
-💡 Business Value
+##💡 Business Value
 This dashboard transitions compliance from a reactive, manual audit process into a proactive monitoring system.
 By providing real-time visibility into SLA timelines, the Product Owner can ensure the SOC is operating within legal boundaries, drastically reducing the risk of regulatory penalties.
